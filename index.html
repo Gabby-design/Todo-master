@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Todo App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- PWA Meta Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4a6fa5">
+<meta name="description" content="A feature-rich todo application">
+<link rel="manifest" href="manifest.json">
+
+<!-- iOS Meta Tags -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Todo Master">
+<link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+
+<!-- Windows Meta Tags -->
+<meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+<meta name="msapplication-TileColor" content="#4a6fa5">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="images/icons/icon-32x32.png">
+</head>
+<body class="light-theme">
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-tasks"></i> Todo Master</h1>
+            <div class="theme-toggle">
+                <button id="themeToggle"><i class="fas fa-moon"></i></button>
+            </div>
+        </header>
+
+        <div class="app-main">
+            <aside class="sidebar">
+                <div class="sidebar-menu">
+                    <button class="active" data-view="all"><i class="fas fa-list"></i> All Tasks</button>
+                    <button data-view="today"><i class="fas fa-calendar-day"></i> Today</button>
+                    <button data-view="important"><i class="fas fa-exclamation-circle"></i> Important</button>
+                    <button data-view="completed"><i class="fas fa-check-circle"></i> Completed</button>
+                </div>
+                
+                <div class="projects-section">
+                    <h3><i class="fas fa-folder"></i> Projects</h3>
+                    <ul class="projects-list">
+                        <!-- Dynamically populated -->
+                    </ul>
+                    <div class="add-project">
+                        <input type="text" id="newProjectName" placeholder="Add new project">
+                        <button id="addProjectBtn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="content-area">
+                <div class="task-controls">
+                    <div class="search-box">
+                        <input type="text" id="taskSearch" placeholder="Search tasks...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <button id="addTaskBtn" class="primary-btn"><i class="fas fa-plus"></i> Add Task</button>
+                </div>
+
+                <div class="task-filters">
+                    <select id="priorityFilter">
+                        <option value="all">All Priorities</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <select id="dateFilter">
+                        <option value="all">All Dates</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+                </div>
+
+                <div class="tasks-container">
+                    <h2 id="tasksHeader">All Tasks</h2>
+                    <ul class="task-list" id="taskList">
+                        <!-- Tasks will be added here dynamically -->
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Add New Task</h2>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle">Title*</label>
+                    <input type="text" id="taskTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description</label>
+                    <textarea id="taskDescription" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskDueDate">Due Date</label>
+                        <input type="date" id="taskDueDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="taskPriority">Priority</label>
+                        <select id="taskPriority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="taskProject">Project</label>
+                    <select id="taskProject">
+                        <option value="inbox">Inbox</option>
+                        <!-- Projects will be added dynamically -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="taskImportant"> Mark as Important
+                    </label>
+                </div>
+                <button type="submit" class="primary-btn">Save Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/taskManager.js"></script>
+    <script src="js/uiController.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
