@@ -51,6 +51,7 @@
                     </ul>
                     <div class="add-project">
                         <input type="text" id="newProjectName" placeholder="Add new project">
+                        <input type="color" id="newProjectColor" value="#4a6fa5" title="Pick a color">
                         <button id="addProjectBtn"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
@@ -87,6 +88,10 @@
                         <!-- Tasks will be added here dynamically -->
                     </ul>
                 </div>
+
+                <button id="exportDataBtn">Export Data</button>
+                <input type="file" id="importDataInput" style="display:none;">
+                <button id="importDataBtn">Import Data</button>
             </main>
         </div>
     </div>
@@ -140,5 +145,6 @@
     <script src="js/taskManager.js"></script>
     <script src="js/uiController.js"></script>
     <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 </body>
 </html>

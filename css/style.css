@@ -255,6 +255,10 @@ body {
     gap: 0.5rem;
 }
 
+.task-list li {
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
 .task-item {
     background-color: var(--card-bg);
     padding: 1rem;
@@ -366,6 +370,7 @@ body {
     z-index: 1000;
     justify-content: center;
     align-items: center;
+    transition: opacity 0.3s, transform 0.3s;
 }
 
 .modal-content {
